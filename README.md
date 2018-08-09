@@ -1,2 +1,2 @@
 # bloomer
-a docker image with bloom
+a docker image with ros bloom
