@@ -19,6 +19,7 @@ RUN set -euvx \
     gettext \
     git \
     openssh-client \
+    perl-xml-xpath \
     python \
     shadow \
   && curl -fsSLo get-pip.py https://bootstrap.pypa.io/get-pip.py \
