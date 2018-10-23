@@ -11,6 +11,7 @@ LABEL \
   org.label-schema.vcs-url="${VCS_URL}" \
   maintainer="Neil Roza <neil@rtr.ai>"
 WORKDIR /tmp
+ADD configure-rosdep .
 RUN set -euvx \
   && apk --no-cache add \
     build-base \
@@ -25,4 +26,6 @@ RUN set -euvx \
   && curl -fsSLo get-pip.py https://bootstrap.pypa.io/get-pip.py \
   && python get-pip.py \
   && pip install bloom \
-  && rosdep init
+  && rosdep init \
+  && ./configure-rosdep \
+  && true
