@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# makeself/hooks/build
+# bloomer/hooks/build
 
 set -euvx
 
