@@ -14,3 +14,6 @@ before_script:
 build_image:
   script:
     - ./hooks/build
+
+after_script:
+  - docker image push $CI_REGISTRY_IMAGE
