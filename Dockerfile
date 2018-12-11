@@ -10,8 +10,10 @@ LABEL \
   org.label-schema.vcs-ref="${VCS_REF}" \
   org.label-schema.vcs-url="${VCS_URL}" \
   maintainer="Neil Roza <neil@rtr.ai>"
-WORKDIR /tmp
+ARG BUILD_CODE="default-build-code"
+WORKDIR /tmp/${BUILD_CODE}
 ADD configure-rosdep .
+ADD install-git-lfs .
 RUN set -euvx \
   && echo \
   && echo "apk update, install packages" \
@@ -27,16 +29,12 @@ RUN set -euvx \
     shadow \
   && echo \
   && echo "install git-lfs" \
-  && curl -fsSLO https://github.com/git-lfs/git-lfs/releases/download/v2.6.1/git-lfs-linux-amd64-v2.6.1.tar.gz \
-  && tar -vxzf git-lfs-linux-amd64-v2.6.1.tar.gz -C /usr/local/bin git-lfs \
+  && ./install-git-lfs \
   && command -v git-lfs \
   && echo \
   && echo "install pip" \
-  && curl -fsSLo get-pip.py https://bootstrap.pypa.io/get-pip.py \
+  && curl -fsSLO https://bootstrap.pypa.io/get-pip.py \
   && python get-pip.py \
-  && echo \
-  && echo "install git-lfs" \
-  && curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.python.sh | sh \
   && echo \
   && echo "install bloom" \
   && pip install bloom \
