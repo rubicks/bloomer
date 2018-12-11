@@ -1,0 +1,5 @@
+before_script:
+  - docker info
+build_image:
+  script:
+    - ./hooks/build
