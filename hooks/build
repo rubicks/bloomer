@@ -78,7 +78,8 @@ fi
 env | sort
 
 # https://medium.com/microscaling-systems/labelling-automated-builds-on-docker-hub-f3d073fb8e1
+# https://stackoverflow.com/questions/41898503/loop-over-environment-variables-in-posix-sh/41914583#41914583
 docker image build \
-    $(awk 'END{for(var in ENVIRON){print var}}' </dev/null | sort | xargs -L1 echo "--build-arg") \
+    $(awk 'END{for(var in ENVIRON){print var}}' </dev/null | sort | xargs -n1 echo "--build-arg") \
     --tag "${IMAGE_NAME}" \
     "${project_dir}"
