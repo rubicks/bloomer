@@ -3,6 +3,11 @@ image: docker:stable
 services:
   - docker:dind
 
+variables:
+  VCS_REF: $CI_COMMIT_SHA
+  VCS_URL: $CI_PROJECT_URL
+  IMAGE_NAME: $CI_REGISTRY_IMAGE
+
 before_script:
   - docker info
 
