@@ -38,8 +38,10 @@ RUN set -euvx \
   && echo \
   && echo "install bloom" \
   && pip install bloom \
-  && rosdep init \
   && echo \
   && echo "configure rosdep" \
   && ./configure-rosdep \
+  && echo \
+  && echo "initialize rosdep" \
+  && rosdep init \
   && true
