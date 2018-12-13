@@ -12,8 +12,8 @@ LABEL \
   maintainer="Neil Roza <neil@rtr.ai>"
 ARG BUILD_CODE="default-build-code"
 WORKDIR /tmp/${BUILD_CODE}
-ADD configure-rosdep .
-ADD install-git-lfs .
+ADD scrippies/configure-rosdep .
+ADD scrippies/install-git-lfs .
 RUN set -euvx \
   && echo \
   && echo "apk update, install packages" \
@@ -39,9 +39,10 @@ RUN set -euvx \
   && echo "install bloom" \
   && pip install bloom \
   && echo \
-  && echo "configure rosdep" \
-  && ./configure-rosdep \
-  && echo \
   && echo "initialize rosdep" \
   && rosdep init \
+  && echo \
+  && echo "configure rosdep realsense" \
+  && ./configure-rosdep \
+    http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo/dists/xenial/main/binary-amd64/Packages \
   && true
