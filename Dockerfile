@@ -12,8 +12,8 @@ LABEL \
   maintainer="Neil Roza <neil@rtr.ai>"
 ARG BUILD_CODE="default-build-code"
 WORKDIR /tmp/${BUILD_CODE}
-ADD scrippies/configure-rosdep .
-ADD scrippies/install-git-lfs .
+COPY scrippies/configure-rosdep .
+COPY scrippies/install-git-lfs .
 RUN set -euvx \
   && echo \
   && echo "apk update, install packages" \

@@ -9,6 +9,11 @@ variables:
   DOCKER_REPO: "${CI_REGISTRY_IMAGE}"
   DOCKER_TAG: "${CI_COMMIT_REF_NAME}"
 
+# https://docs.gitlab.com/ee/ci/git_submodules.html#using-git-submodules-in-your-ci-jobs
+before_script:
+  - git submodule sync --recursive
+  - git submodule update --init --recursive
+
 build_and_push:
   script:
     - docker info
