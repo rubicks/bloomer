@@ -73,7 +73,7 @@ if ! [ -n "${prefix:-}" ]; then
     else
         readonly prefix="${default_prefix}"
     fi
-fi        
+fi
 info "installation prefix: ${prefix}"
 
 readonly latest="$(mktemp -t latest.XXXXXX)"
