@@ -9,6 +9,9 @@
 
 [![Docker Build Status](https://img.shields.io/docker/build/rubicks/bloomer.svg)][hub]
 
+[![Gitlab Pipelines](https://gitlab.com/realtime-neil/bloomer/badges/master/build.svg)][pipelines]
+
 a docker image with ros bloom
 
 [hub]:https://hub.docker.com/r/rubicks/bloomer
+[pipelines]:https://gitlab.com/realtime-neil/bloomer/pipelines
