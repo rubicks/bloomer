@@ -25,7 +25,7 @@ RUN set -euvx \
     git \
     openssh-client \
     perl-xml-xpath \
-    python \
+    python3 \
     shadow \
   && echo \
   && echo "install git-lfs" \
@@ -34,13 +34,16 @@ RUN set -euvx \
   && echo \
   && echo "install pip" \
   && curl -fsSLO https://bootstrap.pypa.io/get-pip.py \
-  && python get-pip.py \
+  && python3 get-pip.py \
   && echo \
   && echo "install bloom" \
   && pip install bloom \
   && echo \
   && echo "initialize rosdep" \
   && rosdep init \
+  && echo \
+  && echo "kill rosdep gbpdistro" \
+  && find /etc/ros/rosdep -type f -name '*.list' -exec sed -i '/^gbpdistro /d' {} + \
   && echo \
   && echo "configure rosdep realsense" \
   && ./configure-rosdep \
