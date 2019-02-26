@@ -19,6 +19,7 @@ RUN set -euvx \
   && echo "apk update, install packages" \
   && apk --no-cache add \
     build-base \
+    coreutils \
     curl \
     expect \
     gettext \
