@@ -12,7 +12,6 @@ LABEL \
   maintainer="Neil Roza <neil@rtr.ai>"
 ARG BUILD_CODE="default-build-code"
 WORKDIR /tmp/${BUILD_CODE}
-COPY scrippies/configure-rosdep .
 COPY scrippies/install-git-lfs .
 RUN set -euvx \
   && echo \
