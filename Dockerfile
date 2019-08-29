@@ -46,7 +46,4 @@ RUN set -euvx \
   && echo "kill rosdep gbpdistro" \
   && find /etc/ros/rosdep -type f -name '*.list' -exec sed -i '/^gbpdistro /d' {} + \
   && echo \
-  && echo "configure rosdep realsense" \
-  && ./configure-rosdep \
-    http://realsense-hw-public.s3.amazonaws.com/Debian/apt-repo/dists/xenial/main/binary-amd64/Packages \
-  && true
+  && echo "done"
