@@ -45,4 +45,7 @@ RUN set -euvx \
   && echo "kill rosdep gbpdistro" \
   && find /etc/ros/rosdep -type f -name '*.list' -exec sed -i '/^gbpdistro /d' {} + \
   && echo \
+  && echo "rosdep update" \
+  && rosdep update --verbose \
+  && echo \
   && echo "done"
