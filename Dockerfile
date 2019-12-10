@@ -12,6 +12,10 @@ LABEL \
   maintainer="Neil Roza <neil@rtr.ai>"
 ARG BUILD_CODE="default-build-code"
 WORKDIR /tmp/${BUILD_CODE}
+ARG BUILD_CODE="default-build-code"
+ENV \
+    ROSDISTRO_INDEX_URL="file:///tmp/${BUILD_CODE}/rosdistro-master/index-v4.yaml" \
+    ROSDEP_SOURCE_PATH="/tmp/${BUILD_CODE}/rosdistro-master/rosdep/sources.list.d"
 COPY scrippies/install-git-lfs .
 RUN set -euvx \
   && echo \
@@ -44,6 +48,12 @@ RUN set -euvx \
   && echo \
   && echo "kill rosdep gbpdistro" \
   && find /etc/ros/rosdep -type f -name '*.list' -exec sed -i '/^gbpdistro /d' {} + \
+  && echo \
+  && echo "freeze rosdistro" \
+  && curl -fsSL https://github.com/ros/rosdistro/archive/master.tar.gz | tar -xzf- \
+  && sed -i s,https://raw.githubusercontent.com/ros/rosdistro/master/,file:///${PWD}/rosdistro-master/,g \
+         rosdistro-master/rosdep/sources.list.d/20-default.list \
+  && rm -rf /etc/ros/rosdep \
   && echo \
   && echo "rosdep update" \
   && rosdep update --verbose \
