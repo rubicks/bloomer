@@ -55,7 +55,4 @@ RUN set -euvx \
          rosdistro-master/rosdep/sources.list.d/20-default.list \
   && rm -rf /etc/ros/rosdep \
   && echo \
-  && echo "rosdep update" \
-  && rosdep update --verbose \
-  && echo \
   && echo "done"
